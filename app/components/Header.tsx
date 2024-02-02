@@ -1,7 +1,11 @@
+
 import Link from "next/link";
 import React from "react";
+import { getServerSession } from "next-auth";
+import { authOptions } from "../api/auth/[...nextauth]/options";
 
-const Header = () => {
+const Header = async () => {
+  const session = await getServerSession(authOptions)
   return (
     <div className="flex justify-between mx-8 my-8">
       <Link href="/">
@@ -13,9 +17,12 @@ const Header = () => {
         </Link>
         <p className="text-lg mx-4">Blog</p>
         <p className="text-lg mx-4">Home</p>
-        <Link href="/api/auth/signin">
-          <p className="text-lg ml-4 font-bold">Login</p>
-        </Link>
+
+        {(session ? (        <Link href="/api/auth/signout">
+          <p className="text-lg ml-4 font-bold">Log out</p>
+        </Link>) : (        <Link href="/api/auth/signin">
+          <p className="text-lg ml-4 font-bold">Log in</p>
+        </Link>))}
       </div>
     </div>
   );
