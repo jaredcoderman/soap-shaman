@@ -1,10 +1,10 @@
 import Image from "next/image";
-import Header from "./components/Header.tsx";
-import Product from "./components/Product.tsx";
-import TagLine from "./components/TagLine.tsx";
-import Quote from "./components/Quote.tsx";
-import Footer from "./components/Footer.tsx";
-import CallToAction from "./components/CallToAction.tsx";
+import Header from "./components/Header";
+import Product from "./components/Product";
+import TagLine from "./components/TagLine";
+import Quote from "./components/Quote";
+import Footer from "./components/Footer";
+import CallToAction from "./components/CallToAction";
 
 function Home() {
   return (
