@@ -1,16 +1,17 @@
 import Link from "next/link";
-import React from "react";
 import { getServerSession } from "next-auth";
+import Image from "next/image";
 import { authOptions } from "../api/auth/[...nextauth]/options";
 
 const Header = async () => {
   const session = await getServerSession(authOptions);
+
   return (
     <div className="flex justify-between mx-8 my-8">
       <Link href="/">
         <div className="font-bold">SOAP SHAMAN</div>
       </Link>
-      <div className="flex sm:hidden md:flex">
+      <div className="hidden lg:flex">
         <Link href="/about">
           <p className="text-lg mx-4">About</p>
         </Link>
@@ -27,7 +28,14 @@ const Header = async () => {
           </Link>
         )}
       </div>
-      <div className="sm:flex md:hidden"></div>
+      <div className="flex lg:hidden">
+        <Image
+          alt="hamburger button icon"
+          src="/hamburger.png"
+          width={40}
+          height={40}
+        ></Image>
+      </div>
     </div>
   );
 };
