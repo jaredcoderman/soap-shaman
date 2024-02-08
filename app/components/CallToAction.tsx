@@ -6,8 +6,8 @@ const CallToAction = () => {
       className="bg-cover bg-center relative py-32"
       style={{ backgroundImage: 'url("./other-bg.jpg")' }}
     >
-      <div className="grid grid-cols-3 m-auto ml-40">
-        <div>
+      <div className="md:grid grid-cols-2 lg:grid-cols-3 md:m-auto md:ml-40">
+        <div className="mx-12">
           <h1 className="pt-12 text-5xl">100% Pure Handmade Soap</h1>
           <p className="text-lg mt-8 font-light">
             Our range of high-quality essential oils has been hand-picked by our
