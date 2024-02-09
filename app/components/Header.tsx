@@ -2,10 +2,11 @@ import Link from "next/link";
 import { getServerSession } from "next-auth";
 import Image from "next/image";
 import { authOptions } from "../api/auth/[...nextauth]/options";
+import Hamburger from "./Hamburger";
 
 const Header = async () => {
   const session = await getServerSession(authOptions);
-
+  console.log(session);
   return (
     <div className="flex justify-between mx-8 my-8">
       <Link href="/">
@@ -28,14 +29,7 @@ const Header = async () => {
           </Link>
         )}
       </div>
-      <div className="flex lg:hidden">
-        <Image
-          alt="hamburger button icon"
-          src="/hamburger.png"
-          width={40}
-          height={40}
-        ></Image>
-      </div>
+      <Hamburger session={session} />
     </div>
   );
 };
