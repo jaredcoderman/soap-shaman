@@ -10,7 +10,7 @@ const Header = async () => {
   return (
     <div className="flex justify-between mx-8 my-8">
       <Link href="/">
-        <div className="font-bold">SOAP SHAMAN</div>
+        <div className="font-bold">SOAP SHAMANS</div>
       </Link>
       <div className="hidden lg:flex">
         <Link href="/about">
