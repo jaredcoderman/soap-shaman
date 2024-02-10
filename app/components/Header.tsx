@@ -16,7 +16,9 @@ const Header = async () => {
         <Link href="/about">
           <p className="hidden lg:inline text-lg mx-4">About</p>
         </Link>
-        <p className="hidden lg:inline text-lg mx-4">Blog</p>
+        <Link href="/products">
+          <p className="hidden lg:inline text-lg mx-4">Products</p>
+        </Link>
         <p className="hidden lg:inline text-lg mx-4">Home</p>
 
         {session ? (
