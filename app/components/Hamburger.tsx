@@ -34,8 +34,8 @@ const Hamburger: React.FC<Props> = (props) => {
           <Link href="/blog">
             <p className="text-lg pb-1  mx-4">Blog</p>
           </Link>
-          <Link href="/">
-            <p className="text-lg pb-1 mx-4">Home</p>
+          <Link href="/products">
+            <p className="text-lg pb-1 mx-4">Products</p>
           </Link>
           {session ? (
             <Link href="/api/auth/signout">

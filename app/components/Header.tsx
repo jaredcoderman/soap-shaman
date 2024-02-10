@@ -17,9 +17,9 @@ const Header = async () => {
           <p className="hidden lg:inline text-lg mx-4">About</p>
         </Link>
         <Link href="/products">
-          <p className="text-lg mx-4">Products</p>
+          <p className="hidden lg:inline text-lg mx-4">Products</p>
         </Link>
-        <p className="text-lg mx-4">Home</p>
+        <p className="hidden lg:inline text-lg mx-4">Home</p>
 
         {session ? (
           <Link href="/api/auth/signout">
