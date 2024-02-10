@@ -64,7 +64,7 @@ const Hamburger: React.FC<Props> = (props) => {
           </div>
           <div onClick={closeMenu}>
             <Link href="/about">
-              <p className="text-left hover:backg pb-8 text-lg mx-4">About</p>
+              <p className="text-left pb-8 text-lg mx-4">About</p>
             </Link>
           </div>
 

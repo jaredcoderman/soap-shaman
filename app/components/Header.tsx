@@ -14,14 +14,15 @@ const Header = async () => {
           <div className="font-bold">SOAP SHAMANS</div>
         </Link>
         <div className="">
-          <Link href="/about">
-            <p className="hidden lg:inline text-lg mx-4">About</p>
+          <Link href="/">
+            <p className="hidden lg:inline text-lg mx-4">Home</p>
           </Link>
           <Link href="/products">
             <p className="hidden lg:inline text-lg mx-4">Products</p>
           </Link>
-          <p className="hidden lg:inline text-lg mx-4">Home</p>
-
+          <Link href="/about">
+            <p className="hidden lg:inline text-lg mx-4">About</p>
+          </Link>
           {session ? (
             <Link href="/api/auth/signout">
               <p className="hidden lg:inline text-lg ml-4 font-bold">Log out</p>
