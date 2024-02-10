@@ -15,8 +15,8 @@ const ProductTile: React.FC<Props> = (props) => {
       <Image src={path} width="250" height="250" alt={alt}></Image>
       <p className="mt-4 text-lg font-medium">{alt}</p>
       <p className="mt-2">$29.99</p>
-      <p className="cursor-pointer mt-4 px-6 py-4 bg-black text-white w-fit text-xl font-light">
-        Purchase
+      <p className="cursor-pointer mt-4 px-6 py-4 hover:bg-black hover:text-white border-black border-2 w-fit text-xl font-light">
+        Add to Bag
       </p>
     </div>
   );
