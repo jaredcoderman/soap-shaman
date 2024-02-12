@@ -35,6 +35,16 @@ model Session {
   user         User     @relation(fields: [userId], references: [id], onDelete: Cascade)
 }
 
+model Product {
+  id          String  @id @default(cuid())
+  productId   String?
+  name        String
+  description String
+  imageURL    String
+  price       Decimal
+  user        User?   @relation(fields: [productId], references: [id], onDelete: Cascade)
+}
+
 model User {
   id            String    @id @default(cuid())
   name          String?
@@ -43,6 +53,7 @@ model User {
   image         String?
   accounts      Account[]
   sessions      Session[]
+  bag           Product[]
 }
 
 model VerificationToken {
