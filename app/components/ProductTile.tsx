@@ -2,14 +2,14 @@
 import React from "react";
 import Image from "next/image";
 import { StaticImport } from "next/dist/shared/lib/get-img-props";
+import { Product } from "@prisma/client";
 
 export type Props = {
-  path: string;
-  alt: string;
+  product: Product;
 };
 
 const ProductTile: React.FC<Props> = (props) => {
-  const { path, alt } = props;
+  const { product } = props;
 
   const addToBag = async () => {
     try {
@@ -19,7 +19,7 @@ const ProductTile: React.FC<Props> = (props) => {
           "Content-Type": "application/json",
         },
         credentials: "include",
-        body: JSON.stringify({}),
+        body: JSON.stringify({ product }),
       });
       if (!response.ok) {
         throw new Error(`${response.status}: (${response.statusText})`);
@@ -31,8 +31,13 @@ const ProductTile: React.FC<Props> = (props) => {
 
   return (
     <div className="mx-auto pb-20 col-span-4 md:col-span-2">
-      <Image src={path} width="250" height="250" alt={alt}></Image>
-      <p className="mt-4 text-lg font-medium">{alt}</p>
+      <Image
+        src={product.imageURL}
+        width="250"
+        height="250"
+        alt={product.name}
+      ></Image>
+      <p className="mt-4 text-lg font-medium">{product.name}</p>
       <p className="mt-2">$29.99</p>
       <p
         onClick={addToBag}

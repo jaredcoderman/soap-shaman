@@ -36,24 +36,33 @@ model Session {
 }
 
 model Product {
-  id          String  @id @default(cuid())
-  productId   String?
+  id          String         @id @default(cuid())
   name        String
   description String
   imageURL    String
   price       Decimal
-  user        User?   @relation(fields: [productId], references: [id], onDelete: Cascade)
+  users       UserProducts[]
+}
+
+model UserProducts {
+  id        String  @id @default(cuid())
+  userId    String
+  productId String
+  user      User    @relation(fields: [userId], references: [email], onDelete: Cascade)
+  product   Product @relation(fields: [productId], references: [id], onDelete: Cascade)
+
+  @@unique([userId, productId], name: "user_product_unique")
 }
 
 model User {
-  id            String    @id @default(cuid())
+  id            String         @id @default(cuid())
   name          String?
-  email         String?   @unique
+  email         String?        @unique
   emailVerified DateTime?
   image         String?
   accounts      Account[]
   sessions      Session[]
-  bag           Product[]
+  products      UserProducts[]
 }
 
 model VerificationToken {
