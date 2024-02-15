@@ -24,6 +24,8 @@ const ProductTile: React.FC<Props> = (props) => {
       if (!response.ok) {
         throw new Error(`${response.status}: (${response.statusText})`);
       }
+      const responseBody = await response.json();
+      console.log(responseBody);
     } catch (err) {
       console.error(err);
     }

@@ -3,6 +3,7 @@ import { getServerSession } from "next-auth";
 import Image from "next/image";
 import { authOptions } from "../api/auth/[...nextauth]/options";
 import Hamburger from "./Hamburger";
+import ShoppingBag from "./ShoppingBag";
 
 const Header = async () => {
   const session = await getServerSession(authOptions);
@@ -13,7 +14,7 @@ const Header = async () => {
         <Link href="/">
           <div className="font-bold">SOAP SHAMANS</div>
         </Link>
-        <div className="">
+        <div className="flex">
           <Link href="/">
             <p className="hidden lg:inline text-lg mx-4">Home</p>
           </Link>
@@ -33,6 +34,7 @@ const Header = async () => {
             </Link>
           )}
           <Hamburger session={session} />
+          <ShoppingBag />
         </div>
       </div>
       <hr />

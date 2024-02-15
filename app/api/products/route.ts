@@ -27,5 +27,12 @@ export async function PATCH(request: NextRequest) {
     }
   })
 
-  return NextResponse.json({ "message": "success!"}, {status: 200})
+  const products = await prisma.userProducts.findMany({
+    where: {
+      userId: email
+    }
+  })
+  console.log(products.length)
+
+  return NextResponse.json({ products }, {status: 200})
 }
