@@ -35,7 +35,7 @@ const ShoppingBag = () => {
         height="30"
         alt="shopping cart"
       />
-      {cartStore.cartItems}
+      <div>{cartStore.cartItems}</div>
     </div>
   );
 };

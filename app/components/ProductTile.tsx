@@ -3,6 +3,7 @@ import React from "react";
 import Image from "next/image";
 import { StaticImport } from "next/dist/shared/lib/get-img-props";
 import { Product } from "@prisma/client";
+import { useCartStore } from "../utils/zustand";
 
 export type Props = {
   product: Product;
@@ -10,6 +11,7 @@ export type Props = {
 
 const ProductTile: React.FC<Props> = (props) => {
   const { product } = props;
+  const cartStore = useCartStore();
 
   const addToBag = async () => {
     try {
@@ -25,7 +27,7 @@ const ProductTile: React.FC<Props> = (props) => {
         throw new Error(`${response.status}: (${response.statusText})`);
       }
       const responseBody = await response.json();
-      console.log(responseBody);
+      cartStore.setCartItems(responseBody.products.length);
     } catch (err) {
       console.error(err);
     }
