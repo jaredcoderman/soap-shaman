@@ -22,6 +22,6 @@
       "@/*": ["./*"]
     }
   },
-  "include": ["next-env.d.ts", "**/*.ts", "**/*.tsx", ".next/types/**/*.ts", "app/auth/[...nextauth]/route.js", "app/auth/[...nextauth]/options.js", "app/auth.js"],
+  "include": ["next-env.d.ts", "**/*.ts", "**/*.tsx", ".next/types/**/*.ts", "app/auth/[...nextauth]/route.js", "app/auth/[...nextauth]/options.js", "app/auth.js", "app/utils/zustand.ts"],
   "exclude": ["node_modules"]
 }
