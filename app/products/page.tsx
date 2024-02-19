@@ -2,7 +2,7 @@
 import React, { useEffect, useState } from "react";
 import ProductTile from "../components/ProductTile";
 
-const page = () => {
+const Page = () => {
   const [products, setProducts] = useState([]);
 
   const fetchProducts = async () => {
@@ -36,4 +36,4 @@ const page = () => {
   );
 };
 
-export default page;
+export default Page;
