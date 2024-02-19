@@ -8,7 +8,7 @@ const Footer = () => {
           <h1 className="text-xl text-center md:text-left">
             Join the Mailing List
           </h1>
-          <p className="mt-6 font-light text-center md:text-left px-6">
+          <p className="mt-6 font-light text-center md:text-left px-6 md:px-0">
             Subscribe to our newsletter and receive 10% off on your first order.
           </p>
           <div className="mt-8 grid grid-cols-10">

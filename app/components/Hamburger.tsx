@@ -37,7 +37,7 @@ const Hamburger: React.FC<Props> = (props) => {
   const closeMenu = () => setOpen(false);
 
   return (
-    <div>
+    <div className="cursor-pointer">
       <div
         className="flex lg:hidden"
         onClick={() => {

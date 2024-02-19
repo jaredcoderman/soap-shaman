@@ -4,10 +4,10 @@ import Image from "next/image";
 import { authOptions } from "../api/auth/[...nextauth]/options";
 import Hamburger from "./Hamburger";
 import ShoppingBag from "./ShoppingBag";
+import CartLabel from "./CartLabel";
 
 const Header = async () => {
   const session = await getServerSession(authOptions);
-
   return (
     <div>
       <div className="flex justify-between px-8 py-8">
@@ -35,6 +35,7 @@ const Header = async () => {
           )}
           <Hamburger session={session} />
           <ShoppingBag />
+          <CartLabel />
         </div>
       </div>
       <hr />

@@ -29,13 +29,12 @@ const ShoppingBag = () => {
   return (
     <div className="ml-4">
       <Image
-        className=""
+        className="cursor-pointer"
         src={`/shopping-bag.png`}
-        width="30"
-        height="30"
+        width="40"
+        height="40"
         alt="shopping cart"
       />
-      <div>{cartStore.cartItems}</div>
     </div>
   );
 };

@@ -5,3 +5,21 @@
 .border-1 {
   border-width: 1px;
 }
+
+.rounded-complete {
+  border-radius: 9999px;
+}
+
+.sm-circle {
+  width: 18px;
+  height: 18px;
+  border-radius: 100%;
+  background-color: black;
+  right: 2.2rem;
+  top:3.5rem;
+}
+
+.cart-label {
+  right: 2.45rem;
+  top: 3.3rem;
+}
