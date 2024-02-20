@@ -3,8 +3,8 @@ import GoogleProvider from "next-auth/providers/google";
 import { PrismaAdapter } from "@auth/prisma-adapter";
 import { Prisma, PrismaClient } from "@prisma/client";
 import { Adapter } from "next-auth/adapters";
+import prisma from "@/app/lib/prisma";
 
-const prisma = new PrismaClient();
 
 export const authOptions: NextAuthOptions = {
   // Secret for Next-auth, without this JWT encryption/decryption won't work

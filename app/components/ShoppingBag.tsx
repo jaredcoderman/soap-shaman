@@ -2,6 +2,7 @@
 import React, { useEffect } from "react";
 import Image from "next/image";
 import { useCartStore } from "../utils/zustand";
+import Link from "next/link";
 const ShoppingBag = () => {
   const cartStore = useCartStore();
 
@@ -14,7 +15,6 @@ const ShoppingBag = () => {
       if (!response.ok)
         throw new Error(`${response.status}: (${response.statusText})`);
       const responseBody = await response.json();
-      console.log(responseBody);
       const userCart = responseBody.userCart;
       cartStore.setCartItems(userCart.length);
     } catch (error) {
@@ -22,20 +22,22 @@ const ShoppingBag = () => {
     }
   };
 
-  useEffect(() => {
-    fetchUserCart();
-  }, []);
+  // useEffect(() => {
+  //   fetchUserCart();
+  // }, []);
 
   return (
-    <div className="ml-4">
-      <Image
-        className="cursor-pointer"
-        src={`/shopping-bag.png`}
-        width="40"
-        height="40"
-        alt="shopping cart"
-      />
-    </div>
+    <Link href="/cart">
+      <div className="ml-4">
+        <Image
+          className="cursor-pointer"
+          src={`/shopping-bag.png`}
+          width="40"
+          height="40"
+          alt="shopping cart"
+        />
+      </div>
+    </Link>
   );
 };
 

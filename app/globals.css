@@ -23,3 +23,11 @@
   right: 2.45rem;
   top: 3.3rem;
 }
+
+tr {
+  padding: 2rem 0;
+}
+
+.border-b-2 {
+  border-bottom-width: 2px;
+}
