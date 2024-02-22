@@ -1,36 +1,23 @@
+"use client";
 import React from "react";
 import Image from "next/image";
-import { Product, UserProducts } from "@prisma/client";
-import { useRouter } from "next/navigation";
+import { UserProducts, Product } from "@prisma/client";
 
-type UserProductsWithProduct = UserProducts & {
+export type UserProductsWithProduct = UserProducts & {
   product: Product;
 };
 
 export type Props = {
   userProduct: UserProductsWithProduct;
+  removeProduct: (productId: string) => void;
 };
 
 const TableProduct: React.FC<Props> = (props) => {
-  const { userProduct } = props;
+  const { userProduct, removeProduct } = props;
   const product = userProduct.product;
-  const router = useRouter();
 
-  const removeProduct = async () => {
-    try {
-      const response = await fetch(`/api/users/products/${userProduct.id}`, {
-        method: "DELETE",
-        headers: {
-          "Content-Type": "application/json",
-        },
-      });
-      if (!response.ok)
-        throw new Error(`${response.status} (${response.statusText})`);
-      const responseBody = await response.json();
-      router.refresh();
-    } catch (error) {
-      console.log(error);
-    }
+  const handleRemoveProduct = () => {
+    removeProduct(userProduct.id);
   };
 
   return (
@@ -51,7 +38,7 @@ const TableProduct: React.FC<Props> = (props) => {
       <td>$29.99</td>
       <td>1</td>
       <td>$29.99</td>
-      <td className="cursor-pointer" onClick={removeProduct}>
+      <td className="cursor-pointer" onClick={handleRemoveProduct}>
         x
       </td>
     </tr>

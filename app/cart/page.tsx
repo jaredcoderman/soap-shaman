@@ -1,34 +1,49 @@
 "use client";
-import React, { useEffect, useState } from "react";
+import React from "react";
 import Image from "next/image";
 import TableProduct from "../components/TableProduct";
-import { useRouter } from "next/navigation";
+import useSWR, { mutate } from "swr";
+import { UserProductsWithProduct } from "../components/TableProduct";
 
-const Page = () => {
-  const [products, setProducts] = useState([]);
+const fetcher = (url: string) => fetch(url).then((res) => res.json());
 
-  const fetchProducts = async () => {
+const Page: React.FC = () => {
+  const { data: products, error } = useSWR<{
+    userCart: UserProductsWithProduct[];
+  }>("/api/users/products", fetcher);
+
+  if (error) {
+    console.error("Error fetching products:", error);
+  }
+
+  const removeProduct = async (productId: string) => {
     try {
-      const response = await fetch("/api/users/products", {
-        method: "GET",
-        credentials: "same-origin",
+      const response = await fetch(`/api/users/products/${productId}`, {
+        method: "DELETE",
+        headers: {
+          "Content-Type": "application/json",
+        },
       });
-      if (!response.ok)
+
+      if (!response.ok) {
         throw new Error(`${response.status} (${response.statusText})`);
+      }
+
       const responseBody = await response.json();
-      setProducts(responseBody.userCart);
+      console.log("Product removed successfully:", responseBody);
+      mutate("/api/users/products"); // Trigger a re-fetch
     } catch (error) {
-      console.log(error);
+      console.error("Error removing product:", error);
     }
   };
 
-  useEffect(() => {
-    fetchProducts();
-  }, []);
-
-  const tableProducts = products.map((product, index) => {
-    return <TableProduct userProduct={product} key={index} />;
-  });
+  const tableProducts = products?.userCart.map((product, index) => (
+    <TableProduct
+      key={index}
+      userProduct={product}
+      removeProduct={removeProduct}
+    />
+  ));
 
   return (
     <div className="pb-32">
