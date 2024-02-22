@@ -2,6 +2,7 @@
 import React, { useEffect, useState } from "react";
 import Image from "next/image";
 import TableProduct from "../components/TableProduct";
+import { useRouter } from "next/navigation";
 
 const Page = () => {
   const [products, setProducts] = useState([]);

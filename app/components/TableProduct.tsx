@@ -1,6 +1,7 @@
 import React from "react";
 import Image from "next/image";
 import { Product, UserProducts } from "@prisma/client";
+import { useRouter } from "next/navigation";
 
 type UserProductsWithProduct = UserProducts & {
   product: Product;
@@ -13,6 +14,24 @@ export type Props = {
 const TableProduct: React.FC<Props> = (props) => {
   const { userProduct } = props;
   const product = userProduct.product;
+  const router = useRouter();
+
+  const removeProduct = async () => {
+    try {
+      const response = await fetch(`/api/users/products/${userProduct.id}`, {
+        method: "DELETE",
+        headers: {
+          "Content-Type": "application/json",
+        },
+      });
+      if (!response.ok)
+        throw new Error(`${response.status} (${response.statusText})`);
+      const responseBody = await response.json();
+      router.refresh();
+    } catch (error) {
+      console.log(error);
+    }
+  };
 
   return (
     <tr>
@@ -32,6 +51,9 @@ const TableProduct: React.FC<Props> = (props) => {
       <td>$29.99</td>
       <td>1</td>
       <td>$29.99</td>
+      <td className="cursor-pointer" onClick={removeProduct}>
+        x
+      </td>
     </tr>
   );
 };
