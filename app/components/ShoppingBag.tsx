@@ -22,9 +22,9 @@ const ShoppingBag = () => {
     }
   };
 
-  // useEffect(() => {
-  //   fetchUserCart();
-  // }, []);
+  useEffect(() => {
+    fetchUserCart();
+  }, []);
 
   return (
     <Link href="/cart">

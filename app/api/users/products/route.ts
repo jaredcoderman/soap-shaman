@@ -10,8 +10,13 @@ export async function GET() {
   const userCart = await prisma.userProducts.findMany({
     where: {
       userId: session.user.email
+    },
+    include: {
+      product: true
     }
   })
+
+
   return NextResponse.json({userCart}, {status: 200})
 
 }

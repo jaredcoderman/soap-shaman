@@ -33,7 +33,6 @@ export async function PATCH(request: NextRequest) {
       userId: email
     }
   })
-  console.log(products.length)
 
   return NextResponse.json({ products }, {status: 200})
 }
